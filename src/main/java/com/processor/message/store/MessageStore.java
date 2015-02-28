@@ -3,12 +3,18 @@ package com.processor.message.store;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+
+import org.apache.log4j.Logger;
+
+import com.processor.consume.Consumer;
 
 
 
 public class MessageStore implements Store {
+	
+	private static Logger logger = Logger.getLogger(MessageStore.class);
+	
 	private long messageId;
 	private static MessageStore messageStore = new MessageStore();
 	private Map<Long, Message> storage;
@@ -102,6 +108,7 @@ public class MessageStore implements Store {
 			}
 			groupCurrencyFrom.put(message.getCurrencyFrom(), listMessageIds);	
 		} catch (Exception e) {
+			logger.error("Exception in saveToCurrencyFromStore ::", e);
 			throw e;
 		}
 	}
@@ -131,6 +138,7 @@ public class MessageStore implements Store {
 			}
 			groupCurrencyTo.put(message.getCurrencyTo(), listMessageIds);
 		} catch (Exception e) {
+			logger.error("Exception in saveToCurrencyToStore ::", e);
 			throw e;
 		}
 	}
@@ -160,6 +168,7 @@ public class MessageStore implements Store {
 			}
 			groupOriginatingCountries.put(message.getOriginatingCountry(), listMessageIds);
 		} catch (Exception e) {
+			logger.error("Exception in saveToCurrencyOriginatingCountriesStore ::", e);
 			throw e;
 		}
 	}

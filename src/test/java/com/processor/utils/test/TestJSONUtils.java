@@ -28,5 +28,19 @@ public class TestJSONUtils {
 			fail("JSONException in test method");
 		}
 	}
+	
+	@Test
+	public void testGetJSONFromMessage(){
+		try {
+			JSONObject json = new JSONObject("{\"userId\": \"134259\", \"currencyFrom\": \"GBP\", \"currencyTo\": \"USD\", \"amountSell\": 1000, \"amountBuy\": 747.10, \"rate\": 0.7471, \"timePlaced\" : \"14-JAN-15 10:27:44\", \"originatingCountry\" : \"US\"}");
+			Message message = new JSONMessagePersistenceImpl().getBlankMessage();
+			JSONUtils.populateMessageObjectFromJson(json, message);
+			String jsonStr = JSONUtils.getJSONFromMessage(message);
+			JSONObject jsonActual = new JSONObject(jsonStr);
+			assertNotNull("The object cannot be null", jsonActual);
+		} catch (Exception e) {
+			fail("Exception occured in testGetJSONFromMessage");
+		}
+	}
 
 }

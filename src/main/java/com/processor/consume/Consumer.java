@@ -50,6 +50,7 @@ public class Consumer {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
 	public Response consumeMessage(String jsonString) {
+    	logger.info("Entered consumeMessage");
     	JSONObject json = null;
     	try {
     		json = new JSONObject(jsonString);
@@ -106,6 +107,7 @@ public class Consumer {
 			}
 			return Response.status(200).entity(json.toString()).build();
 		} catch (MessageStoreException | JSONException e) {
+			logger.error("MessageStoreException | JSONException in getChartData of Consumer :: ", e);
 			return Response.status(201).entity(e.getMessage()).build();
 		}
     }
@@ -124,6 +126,7 @@ public class Consumer {
 			jsonObj.put("allMessages", jsonArray);
 			return Response.status(200).entity(jsonObj.toString()).build();
 		} catch (Exception e) {
+			logger.error("MessageStoreException | JSONException in getChartData of Consumer :: ", e);
 			return Response.status(201).entity(e.getMessage()).build();
 		}
 			

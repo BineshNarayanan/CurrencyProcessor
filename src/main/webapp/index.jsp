@@ -7,7 +7,7 @@
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<div class="container page-header well well-sm" style="text-align:center;background-color:cadetblue">
+	<div class="container page-header well well-sm" style="text-align:center;background-color: rgb(183, 245, 183);">
     	<h3>Currency Processor</h3>
     </div>
 	<br>
@@ -135,7 +135,6 @@ function getAllMessages() {
 		dataType: 'json',
 		contentType: "application/json; charset=utf-8",
 		success:function(res){
-			//alert("It works!" + "\n" + "New Data using POST Method was as Success!!");
 			$("#tblBodyMessages").html('');
 			for (var i = 0; i < res.allMessages.length; i++) {
 				var row = $("<tr class='success'/>");
@@ -226,7 +225,7 @@ function renderDashboardCharts() {
 					objCountryKeys[objCountryKeys.length] = obj.currencyCode;
 				}
 			}
-			
+			 
 			var seriesFrom = new Array();
 			for(var i = 0 ; i < objKeysFrom.length ; i++){
 				seriesFrom.push(objSeriesFrom[objKeysFrom[i]]);
