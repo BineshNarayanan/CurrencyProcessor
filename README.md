@@ -9,7 +9,7 @@ Using highcharts have derived three graphs which shows trends and groups message
 
 On the Application Front End, three tabs Dashboard, Messages and Post message to display graphs, list of messages received and to post a message respectively.
 
-Unit test cases have written to cover the code written.
+Unit test cases using Junit4 have been written to cover the code.
 
 The application front end is developed using Bootstrap 3.3.2
 
