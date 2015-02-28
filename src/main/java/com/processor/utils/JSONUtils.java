@@ -4,31 +4,40 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.processor.message.store.Message;
+import com.processor.persistence.JSONMessagePersistenceImpl;
 
+/**
+ * JSON Util class for some common functions.
+ * @author BNaraya
+ *
+ */
 public abstract class JSONUtils {
 	
-	public static void populateMessageObjectFromJson(JSONObject json, Message message){
+	private static Logger logger = Logger.getLogger(JSONUtils.class);
+	
+	final public static void populateMessageObjectFromJson(JSONObject json, Message message){
 		try {
-			message.setUserId(json.getLong("userId"));
-			message.setCurrencyFrom(json.getString("currencyFrom"));
-			message.setCurrencyTo(json.getString("currencyTo"));
-			message.setAmountSell(json.getDouble("amountSell"));
-			message.setAmountBuy(json.getDouble("amountBuy"));
-			message.setRate(json.getDouble("rate"));
-			message.setTimePlaced(json.getString("timePlaced"));
-			message.setOriginatingCountry(json.getString("originatingCountry"));
+			message.setUserId(json.getLong(Message.JSONFIELD_USER_ID));
+			message.setCurrencyFrom(json.getString(Message.JSONFIELD_CURRENCY_FROM));
+			message.setCurrencyTo(json.getString(Message.JSONFIELD_CURRENCY_TO));
+			message.setAmountSell(json.getDouble(Message.JSONFIELD_AMOUNT_SELL));
+			message.setAmountBuy(json.getDouble(Message.JSONFIELD_AMOUNT_BUY));
+			message.setRate(json.getDouble(Message.JSONFIELD_RATE));
+			message.setTimePlaced(json.getString(Message.JSONFIELD_TIME));
+			message.setOriginatingCountry(json.getString(Message.JSONFIELD_ORIGINATING_COUNTRY));
 		} catch (NumberFormatException | JSONException e) {
-			// TODO Auto-generated catch block
+			logger.error("NumberFormatException | JSONException in populateMessageObjectFromJson ::", e);
 		}
 		
 	}
 	
-	public static void createJSONForChartsUI(String jsonKeyName, JSONObject json,
+	final public static void createJSONForChartsUI(String jsonKeyName, JSONObject json,
 			HashMap<String, ArrayList<Long>> store) throws JSONException {
 		try {
 			JSONArray array = new JSONArray();
@@ -41,23 +50,25 @@ public abstract class JSONUtils {
 			}
 			json.put(jsonKeyName, array);
 		} catch (JSONException e) {
+			logger.error("JSONException in createJSONForChartsUI ::", e);
 			throw e;
 		}
 	}
 	
-	public static String getJSONFromMessage(Message message) throws JSONException {
+	final public static String getJSONFromMessage(Message message) throws JSONException {
 		JSONObject obj = new JSONObject();
 		try {
-			obj.put("id", message.getId());
-			obj.put("userId", message.getUserId());
-			obj.put("amountBuy", message.getAmountBuy());
-			obj.put("amountSell", message.getAmountSell());
-			obj.put("rate", message.getRate());
-			obj.put("currencyFrom", message.getCurrencyFrom());
-			obj.put("currencyTo", message.getCurrencyTo());
-			obj.put("originatingCountry", message.getOriginatingCountry());
-			obj.put("time", message.getTimePlaced());
+			obj.put(Message.JSONFIELD_MESSAGE_ID, message.getId());
+			obj.put(Message.JSONFIELD_USER_ID, message.getUserId());
+			obj.put(Message.JSONFIELD_AMOUNT_BUY, message.getAmountBuy());
+			obj.put(Message.JSONFIELD_AMOUNT_SELL, message.getAmountSell());
+			obj.put(Message.JSONFIELD_RATE, message.getRate());
+			obj.put(Message.JSONFIELD_CURRENCY_FROM, message.getCurrencyFrom());
+			obj.put(Message.JSONFIELD_CURRENCY_TO, message.getCurrencyTo());
+			obj.put(Message.JSONFIELD_ORIGINATING_COUNTRY, message.getOriginatingCountry());
+			obj.put(Message.JSONFIELD_TIME, message.getTimePlaced());
 		} catch (JSONException e) {
+			logger.error("JSONException in getJSONFromMessage ::", e);
 			throw e;
 		}
 		return obj.toString();

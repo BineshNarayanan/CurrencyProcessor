@@ -6,10 +6,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-
-import com.processor.consume.Consumer;
-
-
+/**
+ * The store where message is stored in the context.
+ * @author BNaraya
+ *
+ */
 
 public class MessageStore implements Store {
 	

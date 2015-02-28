@@ -1,10 +1,21 @@
 package com.processor.message.store;
 
-import com.thoughtworks.xstream.annotations.XStreamAlias;
-
-
-@XStreamAlias("message")
+/**
+ * The old Plain Old Java Object Message.
+ * @author BNaraya
+ *
+ */
 public class Message {
+	
+	public static final String JSONFIELD_MESSAGE_ID = "id";
+	public static final String JSONFIELD_USER_ID = "userId";
+	public static final String JSONFIELD_AMOUNT_BUY = "amountBuy";
+	public static final String JSONFIELD_AMOUNT_SELL ="amountSell";
+	public static final String JSONFIELD_RATE = "rate";
+	public static final String JSONFIELD_CURRENCY_FROM = "currencyFrom";
+	public static final String JSONFIELD_CURRENCY_TO = "currencyTo";
+	public static final String JSONFIELD_ORIGINATING_COUNTRY = "originatingCountry";
+	public static final String JSONFIELD_TIME = "timePlaced";
 	
 	private long id;
 	
@@ -13,28 +24,13 @@ public class Message {
 		//id = id + 1;
 	}
 	
-	@XStreamAlias("usedId")
 	private long userId;
-	
-	@XStreamAlias("currencyFrom")
 	private String currencyFrom;
-	
-	@XStreamAlias("currencyTo")
 	private String currencyTo;
-	
-	@XStreamAlias("amountSell")
 	private double amountSell;
-	
-	@XStreamAlias("amountBuy")
 	private double amountBuy;
-	
-	@XStreamAlias("rate")
 	private double rate;
-	
-	@XStreamAlias("timePlaced")
 	private String timePlaced;
-	
-	@XStreamAlias("originatingCountry")
 	private String originatingCountry;
 	
 	public void setUserId(long userId) {

@@ -20,17 +20,16 @@ import org.json.JSONObject;
 import com.processor.exceptions.MessageProcessException;
 import com.processor.exceptions.MessageStoreException;
 import com.processor.message.store.Message;
-import com.processor.message.store.MessageStore;
 import com.processor.messageprocessor.GroupCurrencyFromProcessor;
 import com.processor.messageprocessor.GroupCurrencyToProcessor;
 import com.processor.messageprocessor.GroupOriginatingCountriesProcessor;
 import com.processor.persistence.JSONMessagePersistenceImpl;
 import com.processor.persistence.MessagePersistence;
 import com.processor.utils.JSONUtils;
-import com.thoughtworks.xstream.XStream;
 
 /**
- * Root resource (exposed at "consumer" path)
+ * Root resource (exposed at "consumer" path).
+ * This is the main resource which consumes messages to store in the application context.
  */
 @Path("consumer")
 public class Consumer {

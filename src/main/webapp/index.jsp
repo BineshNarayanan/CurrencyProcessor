@@ -54,6 +54,11 @@
 			</div>
 		</div>
 		<br>
+		<div class="row">
+		  <div class="col-lg-8">
+			<span id="retMessage" class="label label-success"></span>    
+		  </div>
+		</div>
 	</div>
 	
 	
@@ -148,7 +153,7 @@ function getAllMessages() {
 			    row.append($("<td>" + rowData.amountBuy + "</td>"));
 			    row.append($("<td>" + rowData.rate + "</td>"));
 			    row.append($("<td>" + rowData.originatingCountry + "</td>"));
-			    row.append($("<td>" + rowData.time + "</td>"));
+			    row.append($("<td>" + rowData.timePlaced + "</td>"));
 			}
 		},
 		error:function(res){
