@@ -44,9 +44,15 @@
 	<div class="container" id="postMessage" style="display:none">
 		<br>
 		<div class="row">
-			<div class="col-lg-8">
+			<div class="col-lg-12">
+				<h5><small>Sample : {"userId": "134256", "currencyFrom": "EUR", "currencyTo": "GBP", "amountSell": 1000, "amountBuy": 747.10, "rate": 0.7471, "timePlaced" : "14-JAN-15 10:27:44", "originatingCountry" : "FR"}</small></h5>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-lg-10">
 				<div class="input-group">
-					<input type="text" class="form-control" name="message" id="txtMessage">
+					<input type="text" class="form-control" name="message" id="txtMessage" placeholder="Paste the message here">
 					<span class="input-group-btn">
 						<button class="btn btn-primary" type="button" onclick="postData();">Post Message!</button>
 					</span>
