@@ -34,7 +34,8 @@ public class TestConsumerResource extends JerseyTest {
 	
 	@Test
 	public void testConsumeMessage() {
-		Response response = target().path("/consumer/message").request().post(Entity.json("{\"userId\":\"134256\"}"));
+		String jsonString = "{\"userId\": \"134259\", \"currencyFrom\": \"GBP\", \"currencyTo\": \"USD\", \"amountSell\": 1000, \"amountBuy\": 747.10, \"rate\": 0.7471, \"timePlaced\" : \"14-JAN-15 10:27:44\", \"originatingCountry\" : \"US\"}";
+		Response response = target().path("/consumer/message").request().post(Entity.json(jsonString));
         assertEquals(200, response.getStatus());
 	}
 	
