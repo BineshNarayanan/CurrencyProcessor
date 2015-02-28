@@ -11,5 +11,5 @@ On the Application Front End, three tabs Dashboard, Messages and Post message to
 
 Unit test cases have written to cover the code written.
 
-The application front end is developed using Bootstarp 3.3.2
+The application front end is developed using Bootstrap 3.3.2
 
